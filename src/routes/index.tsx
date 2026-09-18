@@ -77,7 +77,7 @@ export const Route = createFileRoute("/")({
 
 function WhatsAppButton({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <Button asChild size="lg" className={`h-14 rounded-sm bg-lime px-6 font-display text-base font-black uppercase text-lime-foreground shadow-lime hover:bg-lime/90 ${className}`}>
+    <Button asChild size="lg" className={`min-h-12 h-auto whitespace-normal rounded-sm bg-lime px-5 py-3 text-center font-display text-[clamp(0.9rem,4vw,1rem)] font-black uppercase leading-tight text-lime-foreground shadow-lime hover:bg-lime/90 sm:min-h-14 sm:px-6 ${className}`}>
       <a href={whatsappUrl} target="_blank" rel="noreferrer">
         <MessageCircle className="size-5" /> {children}
       </a>
@@ -89,7 +89,7 @@ function SectionTitle({ kicker, children, centered = false }: { kicker: string; 
   return (
     <div className={centered ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       <p className="mb-3 flex items-center gap-2 font-display text-sm font-bold uppercase text-lime"><span className="h-px w-8 bg-lime" />{kicker}</p>
-      <h2 className="font-display text-4xl font-black uppercase leading-none text-foreground sm:text-5xl lg:text-6xl">{children}</h2>
+      <h2 className="font-display text-[clamp(2.25rem,11vw,3.75rem)] font-black uppercase leading-[0.95] text-foreground">{children}</h2>
     </div>
   );
 }
@@ -109,27 +109,27 @@ function Index() {
         {menuOpen && <nav className="border-t border-foreground/10 bg-background px-5 py-5 md:hidden">{[['Sobre','#sobre'],['Serviços','#servicos'],['Resultados','#resultados'],['Como funciona','#como-funciona'],['Dúvidas','#faq']].map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)} className="block border-b border-foreground/10 py-3 font-display font-bold uppercase">{label}</a>)}</nav>}
       </header>
 
-      <section id="inicio" className="relative min-h-[760px] pt-20 lg:min-h-[860px]">
+      <section id="inicio" className="relative min-h-[720px] pt-20 sm:min-h-[760px] lg:min-h-[860px]">
         <div className="absolute inset-0 bg-hero-grid opacity-40" />
         <div className="absolute bottom-0 right-0 top-20 w-full lg:w-[52%]">
           <img src={tiagoPhoto.url} alt="Prof. Sebastião Tiago, Personal Trainer" className="h-full w-full object-cover object-[50%_18%] opacity-45 lg:opacity-100" />
           <div className="absolute inset-0 bg-hero-fade" />
         </div>
-        <div className="relative mx-auto flex min-h-[680px] max-w-7xl items-end px-5 pb-16 pt-24 sm:items-center lg:px-8 lg:pb-0">
+        <div className="relative mx-auto flex min-h-[640px] max-w-7xl items-end px-5 pb-10 pt-20 sm:min-h-[680px] sm:items-center sm:pb-16 sm:pt-24 lg:px-8 lg:pb-0">
           <div className="max-w-3xl animate-fade-in">
             <div className="mb-6 inline-flex items-center gap-2 border border-lime/40 bg-lime/10 px-3 py-2 text-xs font-bold uppercase text-lime"><BadgeCheck className="size-4" /> CREF 007920-G/MS</div>
-            <h1 className="font-display text-5xl font-black uppercase leading-[0.9] sm:text-7xl lg:text-8xl">Seu corpo.<br /><span className="text-outline">Suas regras.</span><br /><span className="text-lime">Meu método.</span></h1>
+            <h1 className="font-display text-[clamp(2.9rem,13.5vw,6rem)] font-black uppercase leading-[0.88]">Seu corpo.<br /><span className="text-outline">Suas regras.</span><br /><span className="text-lime">Meu método.</span></h1>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">Treinos personalizados para hipertrofia, emagrecimento e condicionamento físico em Campo Grande/MS.</p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
               <WhatsAppButton>Agende sua avaliação grátis</WhatsAppButton>
-              <a href="#resultados" className="inline-flex h-14 items-center justify-center gap-2 px-4 text-sm font-bold uppercase text-foreground hover:text-lime">Conheça os resultados <ArrowDown className="size-4" /></a>
+              <a href="#resultados" className="inline-flex min-h-12 items-center justify-center gap-2 px-4 text-sm font-bold uppercase text-foreground hover:text-lime sm:min-h-14">Conheça os resultados <ArrowDown className="size-4 shrink-0" /></a>
             </div>
             <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-xs font-bold uppercase text-muted-foreground"><span className="flex items-center gap-2"><Check className="size-4 text-lime" /> Presencial</span><span className="flex items-center gap-2"><Check className="size-4 text-lime" /> Online</span><span className="flex items-center gap-2"><MapPin className="size-4 text-lime" /> Campo Grande/MS</span></div>
           </div>
         </div>
       </section>
 
-      <section id="sobre" className="border-y border-foreground/10 bg-surface py-20 lg:py-28">
+      <section id="sobre" className="border-y border-foreground/10 bg-surface py-16 sm:py-20 lg:py-28">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:px-8">
           <div className="relative mx-auto max-w-md">
             <div className="absolute -inset-3 border border-primary/40" />
@@ -148,7 +148,7 @@ function Index() {
         </div>
       </section>
 
-      <section id="servicos" className="py-20 lg:py-28">
+      <section id="servicos" className="py-16 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionTitle kicker="Serviços">Um método para<br /><span className="text-lime">cada objetivo.</span></SectionTitle>
           <div className="mt-12 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
@@ -157,11 +157,11 @@ function Index() {
         </div>
       </section>
 
-      <section id="resultados" className="bg-primary py-20 text-primary-foreground lg:py-28">
+      <section id="resultados" className="bg-primary py-16 text-primary-foreground sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><div><p className="mb-3 font-display text-sm font-bold uppercase text-lime">Resultados reais</p><h2 className="font-display text-4xl font-black uppercase leading-none sm:text-6xl">Trabalho que<br />aparece.</h2></div><p className="max-w-md text-sm leading-relaxed text-primary-foreground/70">Acompanhamento próximo, método e consistência para transformar objetivos em evolução visível.</p></div>
           <div className="mt-12 grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-            <article className="relative overflow-hidden bg-background">
+            <article className="relative min-w-0 overflow-hidden bg-background">
               <img src={resultPhoto.url} alt="Resultado de aluno: ganho de 8,8 kg de massa muscular" loading="lazy" className="aspect-[4/5] h-full w-full object-cover object-top sm:aspect-[4/3]" />
               <span className="sticker absolute right-4 top-5 flex size-28 rotate-6 items-center justify-center bg-lime text-center font-display text-xl font-black uppercase leading-none text-lime-foreground">+8,8 kg<br />massa</span>
             </article>
@@ -177,7 +177,7 @@ function Index() {
         </div>
       </section>
 
-      <section id="como-funciona" className="py-20 lg:py-28">
+      <section id="como-funciona" className="py-16 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionTitle kicker="Como funciona" centered>Do primeiro passo<br /><span className="text-primary">à sua evolução.</span></SectionTitle>
           <div className="relative mt-14 grid gap-8 md:grid-cols-4">
@@ -187,7 +187,7 @@ function Index() {
         </div>
       </section>
 
-      <section id="faq" className="border-y border-foreground/10 bg-surface py-20 lg:py-28">
+      <section id="faq" className="border-y border-foreground/10 bg-surface py-16 sm:py-20 lg:py-28">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
           <div><SectionTitle kicker="Dúvidas frequentes">Sem dúvida.<br /><span className="text-lime">Só evolução.</span></SectionTitle><p className="mt-6 max-w-md text-muted-foreground">Ainda quer saber algo? Fale diretamente comigo pelo WhatsApp.</p></div>
           <Accordion type="single" collapsible className="border-t border-foreground/15">
@@ -196,16 +196,16 @@ function Index() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-24 text-center lg:py-32">
+      <section className="relative overflow-hidden py-20 text-center sm:py-24 lg:py-32">
         <div className="absolute inset-0 bg-cta-grid opacity-30" />
-        <div className="relative mx-auto max-w-4xl px-5"><Zap className="mx-auto mb-6 size-10 fill-lime text-lime" /><p className="mb-3 font-display text-sm font-bold uppercase text-primary">Seu próximo passo começa agora</p><h2 className="font-display text-5xl font-black uppercase leading-none sm:text-7xl">Comece sua<br /><span className="text-lime">transformação hoje.</span></h2><p className="mx-auto mt-6 max-w-xl text-muted-foreground">Agende uma avaliação gratuita e descubra o caminho mais eficiente e seguro para o seu objetivo.</p><WhatsAppButton className="mt-9 w-full sm:w-auto">Falar com o Personal Tiago</WhatsAppButton></div>
+        <div className="relative mx-auto max-w-4xl px-5"><Zap className="mx-auto mb-6 size-10 fill-lime text-lime" /><p className="mb-3 font-display text-sm font-bold uppercase text-primary">Seu próximo passo começa agora</p><h2 className="font-display text-[clamp(2.75rem,12vw,4.5rem)] font-black uppercase leading-[0.92]">Comece sua<br /><span className="text-lime">transformação hoje.</span></h2><p className="mx-auto mt-6 max-w-xl text-muted-foreground">Agende uma avaliação gratuita e descubra o caminho mais eficiente e seguro para o seu objetivo.</p><WhatsAppButton className="mt-9 w-full sm:w-auto">Falar com o Personal Tiago</WhatsAppButton></div>
       </section>
 
       <footer className="border-t border-foreground/10 bg-surface py-10">
         <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 md:flex-row md:items-center md:justify-between lg:px-8"><div><p className="font-display text-xl font-black uppercase">Prof. Sebastião Tiago</p><p className="mt-1 text-xs uppercase text-muted-foreground">Personal Trainer • CREF 007920-G/MS</p></div><div className="flex flex-wrap gap-5 text-sm"><a href="https://instagram.com/tiagopersonal.cg" target="_blank" rel="noreferrer" className="flex items-center gap-2 font-bold hover:text-lime"><Instagram className="size-4" /> @tiagopersonal.cg</a><span className="flex items-center gap-2 text-muted-foreground"><MapPin className="size-4" /> Campo Grande/MS</span></div></div>
       </footer>
 
-      <a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Agendar avaliação pelo WhatsApp" className="fixed bottom-5 right-5 z-50 flex size-14 items-center justify-center rounded-full bg-whatsapp text-whatsapp-foreground shadow-whatsapp transition-transform hover:scale-105 sm:bottom-7 sm:right-7 sm:size-16"><MessageCircle className="size-7 fill-current" /></a>
+      <a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Agendar avaliação pelo WhatsApp" className="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-4 z-50 flex size-14 items-center justify-center rounded-full bg-whatsapp text-whatsapp-foreground shadow-whatsapp transition-transform hover:scale-105 sm:bottom-7 sm:right-7 sm:size-16"><MessageCircle className="size-7 fill-current" /></a>
     </main>
   );
 }
