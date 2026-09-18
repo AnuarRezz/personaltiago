@@ -19,6 +19,8 @@
  */
 
 @theme inline {
+  --font-sans: "Barlow", sans-serif;
+  --font-display: "Barlow Condensed", sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -59,29 +61,43 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-lime: var(--lime);
+  --color-lime-foreground: var(--lime-foreground);
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
+  --color-surface: var(--surface);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --radius: 0.35rem;
+  --background: oklch(0.115 0.01 255);
+  --foreground: oklch(0.97 0.01 250);
+  --card: oklch(0.15 0.012 255);
+  --card-foreground: oklch(0.97 0.01 250);
+  --popover: oklch(0.15 0.012 255);
+  --popover-foreground: oklch(0.97 0.01 250);
+  --primary: oklch(0.62 0.2 253);
+  --primary-foreground: oklch(0.98 0.005 250);
+  --secondary: oklch(0.19 0.014 255);
+  --secondary-foreground: oklch(0.97 0.01 250);
+  --muted: oklch(0.19 0.014 255);
+  --muted-foreground: oklch(0.7 0.02 250);
+  --accent: oklch(0.88 0.22 121);
+  --accent-foreground: oklch(0.15 0.02 120);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.3 0.015 255);
+  --input: oklch(0.3 0.015 255);
+  --ring: oklch(0.88 0.22 121);
+  --lime: oklch(0.88 0.22 121);
+  --lime-foreground: oklch(0.15 0.025 120);
+  --highlight: oklch(0.73 0.2 344);
+  --highlight-foreground: oklch(0.14 0.02 344);
+  --surface: oklch(0.145 0.012 255);
+  --whatsapp: oklch(0.72 0.19 145);
+  --whatsapp-foreground: oklch(0.99 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +156,62 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background: var(--lime);
+    color: var(--lime-foreground);
+  }
+}
+
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--foreground);
+}
+
+@utility shadow-lime {
+  box-shadow: 0 12px 35px color-mix(in oklab, var(--lime) 28%, transparent);
+}
+
+@utility shadow-whatsapp {
+  box-shadow: 0 12px 35px color-mix(in oklab, var(--whatsapp) 30%, transparent);
+}
+
+@utility bg-hero-grid {
+  background-image: linear-gradient(color-mix(in oklab, var(--foreground) 4%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--foreground) 4%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@utility bg-hero-fade {
+  background: linear-gradient(90deg, var(--background) 0%, color-mix(in oklab, var(--background) 88%, transparent) 15%, color-mix(in oklab, var(--background) 8%, transparent) 58%, color-mix(in oklab, var(--background) 30%, transparent) 100%);
+}
+
+@utility bg-result-lines {
+  background-image: repeating-linear-gradient(135deg, transparent 0 18px, color-mix(in oklab, var(--primary) 35%, transparent) 18px 20px);
+}
+
+@utility bg-cta-grid {
+  background-image: radial-gradient(color-mix(in oklab, var(--primary) 55%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@utility sticker {
+  clip-path: polygon(50% 0%,61% 14%,78% 6%,80% 24%,98% 25%,88% 42%,100% 55%,82% 63%,86% 82%,67% 80%,58% 100%,45% 85%,28% 96%,24% 76%,5% 75%,15% 57%,0% 45%,19% 37%,15% 18%,35% 20%);
+}
+
+@media (max-width: 1023px) {
+  .bg-hero-fade {
+    background: linear-gradient(180deg, color-mix(in oklab, var(--background) 8%, transparent) 0%, color-mix(in oklab, var(--background) 25%, transparent) 45%, var(--background) 92%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
