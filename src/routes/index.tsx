@@ -24,7 +24,8 @@ import {
 import { useState } from "react";
 
 import tiagoPhoto from "@/assets/tiago-personal.jpg.asset.json";
-import resultPhoto from "@/assets/resultado-hipertrofia.jpg.asset.json";
+import resultHypertrophy from "@/assets/resultado-hipertrofia-2026.png.asset.json";
+import resultPersonalized from "@/assets/resultado-personalizado-2026.png.asset.json";
 import trainingOne from "@/assets/treino-aluno-1.mp4.asset.json";
 import trainingTwo from "@/assets/treino-aluno-2.mp4.asset.json";
 import trainingThree from "@/assets/treino-aluno-3.mp4.asset.json";
@@ -36,12 +37,12 @@ const whatsappUrl =
   "https://wa.me/5567991066646?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20o%20Personal%20Tiago%21";
 
 const services = [
-  { icon: BicepsFlexed, title: "Hipertrofia", text: "Estratégia para ganho de massa muscular com progressão planejada e execução segura." },
-  { icon: TrendingDown, title: "Emagrecimento", text: "Treinos dinâmicos e consistentes para reduzir medidas e conquistar mais disposição." },
-  { icon: Activity, title: "Condicionamento", text: "Mais força, mobilidade e fôlego para melhorar seu desempenho dentro e fora da academia." },
-  { icon: HeartPulse, title: "Grupos especiais", text: "Acompanhamento para pessoas com lesões, hipertensão, dores articulares e limitações funcionais." },
-  { icon: UserRoundCheck, title: "Online e híbrido", text: "Planejamento individual, orientação próxima e ajustes para treinar onde você estiver." },
-  { icon: Sparkles, title: "Massoterapia", text: "Suporte para recuperação muscular, alívio de tensões e bem-estar entre os treinos." },
+  { icon: UserRoundCheck, title: "Presencial e online", text: "Treino presencial e consultoria online com planejamento individual, orientação próxima e ajustes contínuos." },
+  { icon: BicepsFlexed, title: "Hipertrofia muscular", text: "Estratégia para ganho de massa muscular com progressão planejada e execução segura." },
+  { icon: Activity, title: "Fortalecimento do core", text: "Exercícios para estabilidade, postura, proteção da coluna e melhor desempenho nos movimentos." },
+  { icon: TrendingDown, title: "Emagrecimento saudável", text: "Treinos consistentes para reduzir gordura, preservar massa muscular e conquistar mais disposição." },
+  { icon: HeartPulse, title: "Idosos e hipertensos", text: "Acompanhamento adaptado às necessidades de grupos especiais, com foco em segurança e autonomia." },
+  { icon: ShieldCheck, title: "Reabilitados de lesão", text: "Treinos para quem passou por lesões ou convive com limitações funcionais, respeitando cada etapa da evolução." },
 ];
 
 const steps = [
@@ -140,9 +141,15 @@ function Index() {
             <SectionTitle kicker="Sobre o profissional">Treino inteligente.<br /><span className="text-primary">Evolução segura.</span></SectionTitle>
             <p className="mt-7 text-lg leading-relaxed text-muted-foreground">Sou o Prof. Sebastião Tiago. Meu trabalho começa entendendo seu corpo, sua rotina e seu objetivo. Cada treino é planejado de forma individual, com atenção à execução, à progressão e à sua segurança.</p>
             <p className="mt-5 leading-relaxed text-muted-foreground">O foco é construir resultados reais sem atalhos: mais força, autonomia, saúde e confiança para você se sentir melhor em todos os aspectos da vida.</p>
-            <div className="mt-8 border-l-4 border-lime bg-background p-6">
-              <div className="mb-3 flex items-center gap-3 font-display text-lg font-black uppercase"><ShieldCheck className="text-lime" /> Atendimento para grupos especiais</div>
-              <p className="text-sm leading-relaxed text-muted-foreground">Treinos adaptados para pessoas com lesões, hipertensão, dores nos joelhos, dores lombares e limitações funcionais, sempre respeitando cada caso.</p>
+            <blockquote className="mt-8 border-l-4 border-lime bg-background p-6">
+              <p className="text-lg font-semibold leading-relaxed">“Eu não transformo apenas corpos. Transformo autoestima, confiança e qualidade de vida através do treinamento.”</p>
+              <p className="mt-4 font-display text-xl font-black uppercase text-lime">Mente forte, corpo forte.</p>
+            </blockquote>
+            <div className="mt-8 grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
+              <p className="flex items-start gap-3"><BadgeCheck className="mt-0.5 size-5 shrink-0 text-primary" /><span><strong className="block text-foreground">Educação Física</strong>Licenciatura e Bacharelado</span></p>
+              <p className="flex items-start gap-3"><BadgeCheck className="mt-0.5 size-5 shrink-0 text-primary" /><span><strong className="block text-foreground">Pós-graduação</strong>Treinamento Físico e Cinesiologia</span></p>
+              <p className="flex items-start gap-3"><BadgeCheck className="mt-0.5 size-5 shrink-0 text-primary" /><span><strong className="block text-foreground">Registro profissional</strong>CREF 007920-G/MS</span></p>
+              <p className="flex items-start gap-3"><BadgeCheck className="mt-0.5 size-5 shrink-0 text-primary" /><span><strong className="block text-foreground">Cursos base</strong>Fisiologia, Treinamento Funcional e Fortalecimento do Core</span></p>
             </div>
           </div>
         </div>
@@ -160,16 +167,17 @@ function Index() {
       <section id="resultados" className="bg-primary py-16 text-primary-foreground sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><div><p className="mb-3 font-display text-sm font-bold uppercase text-lime">Resultados reais</p><h2 className="font-display text-4xl font-black uppercase leading-none sm:text-6xl">Trabalho que<br />aparece.</h2></div><p className="max-w-md text-sm leading-relaxed text-primary-foreground/70">Acompanhamento próximo, método e consistência para transformar objetivos em evolução visível.</p></div>
-          <div className="mt-12 grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-            <article className="relative min-w-0 overflow-hidden bg-background">
-              <img src={resultPhoto.url} alt="Resultado de aluno: ganho de 8,8 kg de massa muscular" loading="lazy" className="aspect-[4/5] h-full w-full object-cover object-top sm:aspect-[4/3]" />
-              <span className="sticker absolute right-4 top-5 flex size-28 rotate-6 items-center justify-center bg-lime text-center font-display text-xl font-black uppercase leading-none text-lime-foreground">+8,8 kg<br />massa</span>
-            </article>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
-              <article className="relative flex min-h-64 flex-col justify-end overflow-hidden bg-background p-7"><div className="absolute inset-0 bg-result-lines opacity-40" /><span className="sticker absolute right-5 top-5 flex size-24 -rotate-6 items-center justify-center bg-highlight text-center font-display text-sm font-black uppercase text-highlight-foreground">Mudança<br />real</span><p className="relative font-display text-6xl font-black text-lime">−12 KG</p><h3 className="relative mt-1 font-display text-xl font-black uppercase">em 2 meses</h3><p className="relative mt-3 text-sm text-muted-foreground">Foco em emagrecimento, rotina e acompanhamento individual.</p></article>
-              <article className="flex min-h-64 flex-col justify-between bg-surface p-7"><span className="font-display text-7xl leading-none text-primary">“</span><blockquote className="text-lg font-semibold leading-relaxed">Treino planejado, atenção em cada execução e evolução que dá vontade de continuar.</blockquote><p className="mt-5 text-xs font-bold uppercase text-muted-foreground">— Aluno acompanhado</p></article>
-            </div>
+           <div className="mt-12 grid gap-5 lg:grid-cols-2">
+             <article className="min-w-0 overflow-hidden bg-background">
+               <img src={resultHypertrophy.url} alt="Antes e depois de aluno com ganho de 8,8 kg de massa muscular" loading="lazy" className="aspect-[2/1] w-full object-cover" />
+               <div className="p-5"><h3 className="font-display text-xl font-black uppercase">+8,8 kg de massa muscular</h3><p className="mt-2 text-sm text-muted-foreground">Resultado construído com treino de hipertrofia, foco e persistência.</p></div>
+             </article>
+             <article className="min-w-0 overflow-hidden bg-background">
+               <img src={resultPersonalized.url} alt="Antes e depois de aluno com perda de gordura e maior definição muscular" loading="lazy" className="aspect-[2/1] w-full object-cover" />
+               <div className="p-5"><h3 className="font-display text-xl font-black uppercase">Menos gordura, mais definição</h3><p className="mt-2 text-sm text-muted-foreground">Evolução alcançada com treinos personalizados e acompanhamento individual.</p></div>
+             </article>
           </div>
+           <blockquote className="mt-5 border-l-4 border-lime bg-background p-6 text-lg font-semibold leading-relaxed text-foreground">“Treino planejado, atenção em cada execução e evolução que dá vontade de continuar.” <span className="mt-3 block text-xs font-bold uppercase text-muted-foreground">— Aluno acompanhado</span></blockquote>
           <div className="mt-14 flex items-center gap-3"><Play className="fill-lime text-lime" /><h3 className="font-display text-2xl font-black uppercase">Treino em ação</h3></div>
           <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
             {[trainingOne, trainingTwo, trainingThree, trainingFour].map((video, index) => <div key={video.url} className="relative overflow-hidden bg-background"><video controls preload="metadata" playsInline className="aspect-[9/16] w-full object-cover" aria-label={`Vídeo de treino com aluno ${index + 1}`}><source src={video.url} type="video/mp4" /></video></div>)}
