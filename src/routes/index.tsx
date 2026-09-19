@@ -6,13 +6,16 @@ import {
   BadgeCheck,
   BicepsFlexed,
   Check,
+  ClipboardCheck,
   Dumbbell,
   HeartPulse,
   Instagram,
+  Laptop,
   MapPin,
   Menu,
   MessageCircle,
   Play,
+  RefreshCw,
   ShieldCheck,
   Sparkles,
   Target,
@@ -26,6 +29,8 @@ import { useState } from "react";
 import tiagoPhoto from "@/assets/tiago-personal.jpg.asset.json";
 import resultHypertrophy from "@/assets/resultado-hipertrofia-2026.png.asset.json";
 import resultPersonalized from "@/assets/resultado-personalizado-2026.png.asset.json";
+import trainingEquipment from "@/assets/atendimento-aparelho.jpg.asset.json";
+import trainingGroup from "@/assets/atendimento-grupo.jpg.asset.json";
 import trainingOne from "@/assets/treino-aluno-1.mp4.asset.json";
 import trainingTwo from "@/assets/treino-aluno-2.mp4.asset.json";
 import trainingThree from "@/assets/treino-aluno-3.mp4.asset.json";
@@ -37,7 +42,7 @@ const whatsappUrl =
   "https://wa.me/5567991066646?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20o%20Personal%20Tiago%21";
 
 const services = [
-  { icon: UserRoundCheck, title: "Presencial e online", text: "Treino presencial e consultoria online com planejamento individual, orientação próxima e ajustes contínuos." },
+  { icon: UserRoundCheck, title: "Presencial e online", text: "Aulas individuais ou em pequenos grupos, em academias e condomínios de Campo Grande/MS, além de consultoria online e híbrida." },
   { icon: BicepsFlexed, title: "Hipertrofia muscular", text: "Estratégia para ganho de massa muscular com progressão planejada e execução segura." },
   { icon: Activity, title: "Fortalecimento do core", text: "Exercícios para estabilidade, postura, proteção da coluna e melhor desempenho nos movimentos." },
   { icon: TrendingDown, title: "Emagrecimento saudável", text: "Treinos consistentes para reduzir gordura, preservar massa muscular e conquistar mais disposição." },
@@ -45,11 +50,48 @@ const services = [
   { icon: ShieldCheck, title: "Reabilitados de lesão", text: "Treinos para quem passou por lesões ou convive com limitações funcionais, respeitando cada etapa da evolução." },
 ];
 
+const plans = [
+  {
+    icon: Laptop,
+    name: "Consultoria Online",
+    label: "Treine onde estiver",
+    items: ["Anamnese completa", "Ficha de treino para sua rotina e objetivos", "Vídeos explicativos dos exercícios", "Suporte direto e acompanhamento semanal via WhatsApp"],
+  },
+  {
+    icon: RefreshCw,
+    name: "Consultoria Híbrida",
+    label: "Online + presencial",
+    featured: true,
+    items: ["Tudo da Consultoria Online", "3 aulas presenciais", "Ajustes de alinhamento postural", "Correção de técnica e execução"],
+  },
+  {
+    icon: UserRoundCheck,
+    name: "Personal Presencial VIP",
+    label: "Acompanhamento total",
+    items: ["Treino individualizado em cada encontro", "Atendimento em academias e condomínios", "Correção em tempo real", "Suporte em massoterapia e recuperação"],
+  },
+];
+
+const benefits = [
+  { icon: ClipboardCheck, title: "Treinos personalizados", text: "Adaptados à sua realidade, rotina e objetivos." },
+  { icon: ShieldCheck, title: "Postura e técnica", text: "Correções que evitam lesões e melhoram a eficácia mecânica." },
+  { icon: Zap, title: "Motivação e constância", text: "Apoio próximo para fortalecer sua disciplina diária." },
+  { icon: TrendingDown, title: "Resultados rápidos e seguros", text: "Treinos otimizados para acelerar o progresso sem colocar sua saúde em risco." },
+];
+
 const steps = [
-  ["01", "Avaliação inicial", "Entendo seu histórico, rotina, objetivos e possíveis limitações."],
-  ["02", "Plano personalizado", "Você recebe um treino construído para o seu momento e sua meta."],
-  ["03", "Acompanhamento", "Monitoro sua evolução e ajusto o plano sempre que necessário."],
-  ["04", "Resultados duradouros", "Consistência, segurança e evolução que você consegue manter."],
+  ["01", "Questionário completo", "Você responde uma anamnese detalhada sobre rotina, histórico e limitações."],
+  ["02", "Montagem personalizada", "Monto seu protocolo individualizado com base nas suas metas e na sua rotina real."],
+  ["03", "Vídeos explicativos", "Você recebe o treino detalhado com guias em vídeo para executar cada movimento com segurança."],
+  ["04", "Acompanhamento semanal", "Feedback e ajustes contínuos via WhatsApp para garantir evolução constante."],
+];
+
+const deliverables = [
+  "Avaliação completa e anamnese",
+  "Treinos personalizados e periodizados",
+  "Acompanhamento da execução e técnica",
+  "Ajustes constantes conforme a evolução",
+  "Motivação e compromisso direto com sua jornada",
 ];
 
 const faqs = [
@@ -103,11 +145,11 @@ function Index() {
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
           <a href="#inicio" className="font-display text-xl font-black uppercase leading-none text-foreground">Tiago<span className="text-lime">Personal</span></a>
           <nav className="hidden items-center gap-7 md:flex" aria-label="Navegação principal">
-            {[['Sobre','#sobre'],['Serviços','#servicos'],['Resultados','#resultados'],['Como funciona','#como-funciona'],['Dúvidas','#faq']].map(([label, href]) => <a key={href} href={href} className="text-sm font-bold uppercase text-muted-foreground transition-colors hover:text-lime">{label}</a>)}
+            {[['Sobre','#sobre'],['Serviços','#servicos'],['Planos','#planos'],['Resultados','#resultados'],['Como funciona','#como-funciona'],['Dúvidas','#faq']].map(([label, href]) => <a key={href} href={href} className="text-sm font-bold uppercase text-muted-foreground transition-colors hover:text-lime">{label}</a>)}
           </nav>
           <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}>{menuOpen ? <X /> : <Menu />}</Button>
         </div>
-        {menuOpen && <nav className="border-t border-foreground/10 bg-background px-5 py-5 md:hidden">{[['Sobre','#sobre'],['Serviços','#servicos'],['Resultados','#resultados'],['Como funciona','#como-funciona'],['Dúvidas','#faq']].map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)} className="block border-b border-foreground/10 py-3 font-display font-bold uppercase">{label}</a>)}</nav>}
+        {menuOpen && <nav className="border-t border-foreground/10 bg-background px-5 py-5 md:hidden">{[['Sobre','#sobre'],['Serviços','#servicos'],['Planos','#planos'],['Resultados','#resultados'],['Como funciona','#como-funciona'],['Dúvidas','#faq']].map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)} className="block border-b border-foreground/10 py-3 font-display font-bold uppercase">{label}</a>)}</nav>}
       </header>
 
       <section id="inicio" className="relative min-h-[720px] pt-20 sm:min-h-[760px] lg:min-h-[860px]">
@@ -140,11 +182,14 @@ function Index() {
           <div>
             <SectionTitle kicker="Sobre o profissional">Treino inteligente.<br /><span className="text-primary">Evolução segura.</span></SectionTitle>
             <p className="mt-7 text-lg leading-relaxed text-muted-foreground">Sou o Prof. Sebastião Tiago. Meu trabalho começa entendendo seu corpo, sua rotina e seu objetivo. Cada treino é planejado de forma individual, com atenção à execução, à progressão e à sua segurança.</p>
-            <p className="mt-5 leading-relaxed text-muted-foreground">O foco é construir resultados reais sem atalhos: mais força, autonomia, saúde e confiança para você se sentir melhor em todos os aspectos da vida.</p>
+            <p className="mt-5 leading-relaxed text-muted-foreground">Meu trabalho é voltado para pessoas que buscam resultados com planejamento e acompanhamento, seja para hipertrofia, emagrecimento, fortalecimento ou melhora do condicionamento físico.</p>
+            <p className="mt-5 leading-relaxed text-muted-foreground">Também trabalho com quem precisa de cuidado mais individualizado — alunos com limitações, lesões ou necessidades específicas — respeitando as condições de cada pessoa e, quando necessário, em conjunto com orientações médicas.</p>
+            <p className="mt-5 leading-relaxed text-muted-foreground">Você não fica simplesmente fazendo exercícios aleatórios. Eu acompanho sua execução, corrijo sua técnica, ajusto o treinamento conforme sua evolução e faço com que cada treino tenha um propósito dentro do seu objetivo.</p>
             <blockquote className="mt-8 border-l-4 border-lime bg-background p-6">
               <p className="text-lg font-semibold leading-relaxed">“Eu não transformo apenas corpos. Transformo autoestima, confiança e qualidade de vida através do treinamento.”</p>
               <p className="mt-4 font-display text-xl font-black uppercase text-lime">Mente forte, corpo forte.</p>
             </blockquote>
+            <div className="mt-6 flex flex-wrap gap-3 font-display text-base font-black uppercase"><span className="border border-primary/40 bg-primary/10 px-4 py-3 text-primary">Seu objetivo, minha missão!</span><span className="border border-lime/40 bg-lime/10 px-4 py-3 text-lime">Treino • Foco • Evolução</span></div>
             <div className="mt-8 grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
               <p className="flex items-start gap-3"><BadgeCheck className="mt-0.5 size-5 shrink-0 text-primary" /><span><strong className="block text-foreground">Educação Física</strong>Licenciatura e Bacharelado</span></p>
               <p className="flex items-start gap-3"><BadgeCheck className="mt-0.5 size-5 shrink-0 text-primary" /><span><strong className="block text-foreground">Pós-graduação</strong>Treinamento Físico e Cinesiologia</span></p>
@@ -160,6 +205,32 @@ function Index() {
           <SectionTitle kicker="Serviços">Um método para<br /><span className="text-lime">cada objetivo.</span></SectionTitle>
           <div className="mt-12 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
             {services.map(({ icon: Icon, title, text }, index) => <article key={title} className="group relative bg-background p-7 transition-colors duration-300 hover:bg-surface"><span className="absolute right-5 top-4 font-display text-5xl font-black text-foreground/5">0{index + 1}</span><div className="mb-8 flex size-12 items-center justify-center bg-primary text-primary-foreground transition-transform group-hover:-translate-y-1"><Icon /></div><h3 className="font-display text-xl font-black uppercase">{title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{text}</p></article>)}
+          </div>
+        </div>
+      </section>
+
+      <section id="planos" className="border-y border-foreground/10 bg-surface py-16 sm:py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end"><SectionTitle kicker="Planos de acompanhamento">Escolha como quer<br /><span className="text-primary">treinar comigo.</span></SectionTitle><p className="max-w-lg text-muted-foreground">Presencial em academias e condomínios de Campo Grande/MS, online de onde você estiver ou no formato híbrido.</p></div>
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {plans.map(({ icon: Icon, name, label, items, featured }) => <article key={name} className={`relative flex min-h-full flex-col border p-6 sm:p-8 ${featured ? "border-lime bg-background shadow-lime" : "border-foreground/15 bg-background"}`}>{featured && <span className="absolute right-4 top-4 bg-lime px-3 py-1 text-xs font-black uppercase text-lime-foreground">Mais completo</span>}<Icon className={`size-10 ${featured ? "text-lime" : "text-primary"}`} /><p className="mt-6 text-xs font-bold uppercase text-muted-foreground">{label}</p><h3 className="mt-1 font-display text-3xl font-black uppercase">{name}</h3><ul className="mt-7 flex-1 space-y-4">{items.map((item) => <li key={item} className="flex gap-3 text-sm leading-relaxed text-muted-foreground"><Check className="mt-0.5 size-5 shrink-0 text-lime" /><span>{item}</span></li>)}</ul><WhatsAppButton className="mt-8 w-full">Quero este acompanhamento</WhatsAppButton></article>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <SectionTitle kicker="Por que treinar com personal">Mais direção.<br /><span className="text-lime">Mais resultado.</span></SectionTitle>
+          <div className="mt-12 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">{benefits.map(({ icon: Icon, title, text }) => <article key={title} className="bg-background p-6 sm:p-7"><Icon className="size-9 text-primary" /><h3 className="mt-6 font-display text-xl font-black uppercase">{title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{text}</p></article>)}</div>
+        </div>
+      </section>
+
+      <section className="border-y border-foreground/10 bg-surface py-16 sm:py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><SectionTitle kicker="Atendimento real">Técnica de perto.<br /><span className="text-primary">Evolução na prática.</span></SectionTitle><p className="max-w-md text-muted-foreground">Acompanhamento individual em aparelhos e aulas para pequenos grupos, sempre com atenção à execução.</p></div>
+          <div className="mt-10 grid gap-4 md:grid-cols-[1.25fr_0.75fr]">
+            <figure className="relative min-h-[320px] overflow-hidden md:min-h-[540px]"><img src={trainingEquipment.url} alt="Tiago orientando aluno durante exercício em aparelho" loading="lazy" className="absolute inset-0 h-full w-full object-cover" /><figcaption className="absolute inset-x-0 bottom-0 bg-background/90 p-5 font-display text-lg font-black uppercase">Correção e acompanhamento individual</figcaption></figure>
+            <figure className="relative min-h-[320px] overflow-hidden md:min-h-[540px]"><img src={trainingGroup.url} alt="Tiago conduzindo treino presencial em pequeno grupo" loading="lazy" className="absolute inset-0 h-full w-full object-cover" /><figcaption className="absolute inset-x-0 bottom-0 bg-background/90 p-5 font-display text-lg font-black uppercase">Aulas dinâmicas em pequenos grupos</figcaption></figure>
           </div>
         </div>
       </section>
@@ -187,10 +258,14 @@ function Index() {
 
       <section id="como-funciona" className="py-16 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionTitle kicker="Como funciona" centered>Do primeiro passo<br /><span className="text-primary">à sua evolução.</span></SectionTitle>
+          <SectionTitle kicker="Como funciona a consultoria" centered>Da anamnese<br /><span className="text-primary">à sua evolução.</span></SectionTitle>
           <div className="relative mt-14 grid gap-8 md:grid-cols-4">
             <div className="absolute left-[12%] right-[12%] top-7 hidden h-px bg-border md:block" />
             {steps.map(([number, title, text]) => <article key={number} className="relative text-center"><span className="relative z-10 mx-auto flex size-14 items-center justify-center rounded-full border-4 border-background bg-lime font-display text-lg font-black text-lime-foreground">{number}</span><h3 className="mt-5 font-display text-lg font-black uppercase">{title}</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p></article>)}
+          </div>
+          <div className="mt-16 grid gap-8 border-t border-foreground/15 pt-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+            <div><p className="font-display text-sm font-bold uppercase text-lime">O que você recebe</p><h3 className="mt-3 font-display text-3xl font-black uppercase sm:text-4xl">Tudo para treinar<br />com propósito.</h3></div>
+            <ul className="grid gap-3 sm:grid-cols-2">{deliverables.map((item) => <li key={item} className="flex min-h-16 items-center gap-3 border border-foreground/15 bg-surface px-4 py-3 text-sm font-semibold"><Check className="size-5 shrink-0 text-lime" />{item}</li>)}</ul>
           </div>
         </div>
       </section>
@@ -206,7 +281,7 @@ function Index() {
 
       <section className="relative overflow-hidden py-20 text-center sm:py-24 lg:py-32">
         <div className="absolute inset-0 bg-cta-grid opacity-30" />
-        <div className="relative mx-auto max-w-4xl px-5"><Zap className="mx-auto mb-6 size-10 fill-lime text-lime" /><p className="mb-3 font-display text-sm font-bold uppercase text-primary">Seu próximo passo começa agora</p><h2 className="font-display text-[clamp(2.75rem,12vw,4.5rem)] font-black uppercase leading-[0.92]">Comece sua<br /><span className="text-lime">transformação hoje.</span></h2><p className="mx-auto mt-6 max-w-xl text-muted-foreground">Agende uma avaliação gratuita e descubra o caminho mais eficiente e seguro para o seu objetivo.</p><WhatsAppButton className="mt-9 w-full sm:w-auto">Falar com o Personal Tiago</WhatsAppButton></div>
+        <div className="relative mx-auto max-w-4xl px-5"><Zap className="mx-auto mb-6 size-10 fill-lime text-lime" /><p className="mb-3 font-display text-sm font-bold uppercase text-primary">Seu objetivo. Meu compromisso.</p><h2 className="font-display text-[clamp(2.75rem,12vw,4.5rem)] font-black uppercase leading-[0.92]">Comece sua<br /><span className="text-lime">transformação hoje.</span></h2><p className="mx-auto mt-6 max-w-xl text-muted-foreground">Agende uma avaliação gratuita e descubra o caminho mais eficiente e seguro para o seu objetivo.</p><WhatsAppButton className="mt-9 w-full sm:w-auto">Falar com o Personal Tiago</WhatsAppButton></div>
       </section>
 
       <footer className="border-t border-foreground/10 bg-surface py-10">
