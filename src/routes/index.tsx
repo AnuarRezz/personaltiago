@@ -36,7 +36,11 @@ import trainingFour from "@/assets/treino-aluno-4.mp4.asset.json";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 
-const tiagoPhotoUrl = `https://personaltiago.lovable.app${tiagoPhoto.url}`;
+const assetUrl = (path: string) => `https://personaltiago.lovable.app${path}`;
+const tiagoPhotoUrl = assetUrl(tiagoPhoto.url);
+const resultHypertrophyUrl = assetUrl(resultHypertrophy.url);
+const resultPersonalizedUrl = assetUrl(resultPersonalized.url);
+const trainingVideos = [trainingOne, trainingTwo, trainingThree, trainingFour].map((video) => assetUrl(video.url));
 const whatsappNumber = "5567991066646";
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Olá, quero agendar uma avaliação com o Personal Tiago!")}`;
 const getPlanWhatsappUrl = (planName: string) =>
@@ -233,18 +237,18 @@ function Index() {
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><div><p className="mb-3 font-display text-sm font-bold uppercase text-lime">Resultados reais</p><h2 className="font-display text-4xl font-black uppercase leading-none sm:text-6xl">Trabalho que<br />aparece.</h2></div><p className="max-w-md text-sm leading-relaxed text-primary-foreground/70">Acompanhamento próximo, método e consistência para transformar objetivos em evolução visível.</p></div>
            <div className="mt-12 grid gap-5 lg:grid-cols-2">
              <article className="min-w-0 overflow-hidden bg-background">
-               <img src={resultHypertrophy.url} alt="Antes e depois de aluno com ganho de 8,8 kg de massa muscular" loading="lazy" className="aspect-[2/1] w-full object-cover" />
+                <img src={resultHypertrophyUrl} alt="Antes e depois de aluno com ganho de 8,8 kg de massa muscular" loading="lazy" className="aspect-[2/1] w-full object-cover" />
                <div className="p-5"><h3 className="font-display text-xl font-black uppercase">+8,8 kg de massa muscular</h3><p className="mt-2 text-sm text-muted-foreground">Resultado construído com treino de hipertrofia, foco e persistência.</p></div>
              </article>
              <article className="min-w-0 overflow-hidden bg-background">
-               <img src={resultPersonalized.url} alt="Antes e depois de aluno com perda de gordura e maior definição muscular" loading="lazy" className="aspect-[2/1] w-full object-cover" />
+                <img src={resultPersonalizedUrl} alt="Antes e depois de aluno com perda de gordura e maior definição muscular" loading="lazy" className="aspect-[2/1] w-full object-cover" />
                <div className="p-5"><h3 className="font-display text-xl font-black uppercase">Menos gordura, mais definição</h3><p className="mt-2 text-sm text-muted-foreground">Evolução alcançada com treinos personalizados e acompanhamento individual.</p></div>
              </article>
           </div>
            <blockquote className="mt-5 border-l-4 border-lime bg-background p-6 text-lg font-semibold leading-relaxed text-foreground">“Treino planejado, atenção em cada execução e evolução que dá vontade de continuar.” <span className="mt-3 block text-xs font-bold uppercase text-muted-foreground">— Aluno acompanhado</span></blockquote>
           <div className="mt-14 flex items-center gap-3"><Play className="fill-lime text-lime" /><h3 className="font-display text-2xl font-black uppercase">Treino em ação</h3></div>
           <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
-            {[trainingOne, trainingTwo, trainingThree, trainingFour].map((video, index) => <div key={video.url} className="relative overflow-hidden bg-background"><video controls preload="metadata" playsInline className="aspect-[9/16] w-full object-cover" aria-label={`Vídeo de treino com aluno ${index + 1}`}><source src={video.url} type="video/mp4" /></video></div>)}
+             {trainingVideos.map((videoUrl, index) => <div key={videoUrl} className="relative overflow-hidden bg-background"><video controls preload="metadata" playsInline className="aspect-[9/16] w-full object-cover" aria-label={`Vídeo de treino com aluno ${index + 1}`}><source src={videoUrl} type="video/mp4" /></video></div>)}
           </div>
         </div>
       </section>
