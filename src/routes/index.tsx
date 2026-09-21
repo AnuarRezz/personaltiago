@@ -29,8 +29,6 @@ import { useState } from "react";
 import tiagoPhoto from "@/assets/tiago-personal.jpg.asset.json";
 import resultHypertrophy from "@/assets/resultado-hipertrofia-2026.png.asset.json";
 import resultPersonalized from "@/assets/resultado-personalizado-2026.png.asset.json";
-import trainingEquipment from "@/assets/atendimento-aparelho.jpg.asset.json";
-import trainingGroup from "@/assets/atendimento-grupo.jpg.asset.json";
 import trainingOne from "@/assets/treino-aluno-1.mp4.asset.json";
 import trainingTwo from "@/assets/treino-aluno-2.mp4.asset.json";
 import trainingThree from "@/assets/treino-aluno-3.mp4.asset.json";
@@ -222,16 +220,6 @@ function Index() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionTitle kicker="Por que treinar com personal">Mais direção.<br /><span className="text-lime">Mais resultado.</span></SectionTitle>
           <div className="mt-12 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">{benefits.map(({ icon: Icon, title, text }) => <article key={title} className="bg-background p-6 sm:p-7"><Icon className="size-9 text-primary" /><h3 className="mt-6 font-display text-xl font-black uppercase">{title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{text}</p></article>)}</div>
-        </div>
-      </section>
-
-      <section className="border-y border-foreground/10 bg-surface py-16 sm:py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><SectionTitle kicker="Atendimento real">Técnica de perto.<br /><span className="text-primary">Evolução na prática.</span></SectionTitle><p className="max-w-md text-muted-foreground">Acompanhamento individual em aparelhos e aulas para pequenos grupos, sempre com atenção à execução.</p></div>
-          <div className="mt-10 grid gap-4 md:grid-cols-[1.25fr_0.75fr]">
-            <figure className="relative min-h-[320px] overflow-hidden md:min-h-[540px]"><img src={trainingEquipment.url} alt="Tiago orientando aluno durante exercício em aparelho" loading="lazy" className="absolute inset-0 h-full w-full object-cover" /><figcaption className="absolute inset-x-0 bottom-0 bg-background/90 p-5 font-display text-lg font-black uppercase">Correção e acompanhamento individual</figcaption></figure>
-            <figure className="relative min-h-[320px] overflow-hidden md:min-h-[540px]"><img src={trainingGroup.url} alt="Tiago conduzindo treino presencial em pequeno grupo" loading="lazy" className="absolute inset-0 h-full w-full object-cover" /><figcaption className="absolute inset-x-0 bottom-0 bg-background/90 p-5 font-display text-lg font-black uppercase">Aulas dinâmicas em pequenos grupos</figcaption></figure>
-          </div>
         </div>
       </section>
 
