@@ -36,8 +36,10 @@ import trainingFour from "@/assets/treino-aluno-4.mp4.asset.json";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 
-const whatsappUrl =
-  "https://wa.me/5567991066646?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20o%20Personal%20Tiago%21";
+const whatsappNumber = "5567991066646";
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Olá, quero agendar uma avaliação com o Personal Tiago!")}`;
+const getPlanWhatsappUrl = (planName: string) =>
+  `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Olá, Tiago! Tenho interesse no plano ${planName} e gostaria de saber mais sobre esse acompanhamento.`)}`;
 
 const services = [
   { icon: UserRoundCheck, title: "Presencial e online", text: "Aulas individuais ou em pequenos grupos, em academias e condomínios de Campo Grande/MS, além de consultoria online e híbrida." },
@@ -116,10 +118,10 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-function WhatsAppButton({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function WhatsAppButton({ children, className = "", href = whatsappUrl }: { children: React.ReactNode; className?: string; href?: string }) {
   return (
     <Button asChild size="lg" className={`min-h-12 h-auto whitespace-normal rounded-sm bg-lime px-5 py-3 text-center font-display text-[clamp(0.9rem,4vw,1rem)] font-black uppercase leading-tight text-lime-foreground shadow-lime hover:bg-lime/90 sm:min-h-14 sm:px-6 ${className}`}>
-      <a href={whatsappUrl} target="_blank" rel="noreferrer">
+      <a href={href} target="_blank" rel="noreferrer">
         <MessageCircle className="size-5" /> {children}
       </a>
     </Button>
@@ -211,7 +213,7 @@ function Index() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end"><SectionTitle kicker="Planos de acompanhamento">Escolha como quer<br /><span className="text-primary">treinar comigo.</span></SectionTitle><p className="max-w-lg text-muted-foreground">Presencial em academias e condomínios de Campo Grande/MS, online de onde você estiver ou no formato híbrido.</p></div>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            {plans.map(({ icon: Icon, name, label, items, featured }) => <article key={name} className={`relative flex min-h-full flex-col border p-6 sm:p-8 ${featured ? "border-lime bg-background shadow-lime" : "border-foreground/15 bg-background"}`}>{featured && <span className="absolute right-4 top-4 bg-lime px-3 py-1 text-xs font-black uppercase text-lime-foreground">Mais completo</span>}<Icon className={`size-10 ${featured ? "text-lime" : "text-primary"}`} /><p className="mt-6 text-xs font-bold uppercase text-muted-foreground">{label}</p><h3 className="mt-1 font-display text-3xl font-black uppercase">{name}</h3><ul className="mt-7 flex-1 space-y-4">{items.map((item) => <li key={item} className="flex gap-3 text-sm leading-relaxed text-muted-foreground"><Check className="mt-0.5 size-5 shrink-0 text-lime" /><span>{item}</span></li>)}</ul><WhatsAppButton className="mt-8 w-full">Quero este acompanhamento</WhatsAppButton></article>)}
+             {plans.map(({ icon: Icon, name, label, items, featured }) => <article key={name} className={`relative flex min-h-full flex-col border p-6 sm:p-8 ${featured ? "border-lime bg-background shadow-lime" : "border-foreground/15 bg-background"}`}>{featured && <span className="absolute right-4 top-4 bg-lime px-3 py-1 text-xs font-black uppercase text-lime-foreground">Mais completo</span>}<Icon className={`size-10 ${featured ? "text-lime" : "text-primary"}`} /><p className="mt-6 text-xs font-bold uppercase text-muted-foreground">{label}</p><h3 className="mt-1 font-display text-3xl font-black uppercase">{name}</h3><ul className="mt-7 flex-1 space-y-4">{items.map((item) => <li key={item} className="flex gap-3 text-sm leading-relaxed text-muted-foreground"><Check className="mt-0.5 size-5 shrink-0 text-lime" /><span>{item}</span></li>)}</ul><WhatsAppButton href={getPlanWhatsappUrl(name)} className="mt-8 w-full">Quero este acompanhamento</WhatsAppButton></article>)}
           </div>
         </div>
       </section>
