@@ -36,6 +36,7 @@ import trainingFour from "@/assets/treino-aluno-4.mp4.asset.json";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 
+const tiagoPhotoUrl = `https://personaltiago.lovable.app${tiagoPhoto.url}`;
 const whatsappNumber = "5567991066646";
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Olá, quero agendar uma avaliação com o Personal Tiago!")}`;
 const getPlanWhatsappUrl = (planName: string) =>
@@ -111,7 +112,9 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Treino individual, acompanhamento próximo e resultados com segurança. Agende sua avaliação gratuita." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
+      { property: "og:image", content: tiagoPhotoUrl },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: tiagoPhotoUrl },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
@@ -155,7 +158,7 @@ function Index() {
       <section id="inicio" className="relative min-h-[720px] pt-20 sm:min-h-[760px] lg:min-h-[860px]">
         <div className="absolute inset-0 bg-hero-grid opacity-40" />
         <div className="absolute bottom-0 right-0 top-20 w-full lg:w-[52%]">
-          <img src={tiagoPhoto.url} alt="Prof. Sebastião Tiago, Personal Trainer" className="h-full w-full object-cover object-[50%_18%] opacity-45 lg:opacity-100" />
+          <img src={tiagoPhotoUrl} alt="Prof. Sebastião Tiago, Personal Trainer" className="h-full w-full object-cover object-[50%_18%] opacity-45 lg:opacity-100" />
           <div className="absolute inset-0 bg-hero-fade" />
         </div>
         <div className="relative mx-auto flex min-h-[640px] max-w-7xl items-end px-5 pb-10 pt-20 sm:min-h-[680px] sm:items-center sm:pb-16 sm:pt-24 lg:px-8 lg:pb-0">
@@ -176,7 +179,7 @@ function Index() {
         <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:px-8">
           <div className="relative mx-auto max-w-md">
             <div className="absolute -inset-3 border border-primary/40" />
-            <img src={tiagoPhoto.url} alt="Personal Trainer Sebastião Tiago" loading="lazy" className="relative aspect-[4/5] w-full object-cover object-top grayscale-[15%]" />
+            <img src={tiagoPhotoUrl} alt="Personal Trainer Sebastião Tiago" loading="lazy" className="relative aspect-[4/5] w-full object-cover object-top grayscale-[15%]" />
             <div className="absolute -bottom-5 -right-3 bg-primary px-5 py-4 font-display text-sm font-black uppercase text-primary-foreground">Personal Trainer</div>
           </div>
           <div>
