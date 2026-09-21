@@ -30,9 +30,13 @@ import tiagoPhoto from "@/assets/tiago-personal.jpg.asset.json";
 import resultHypertrophy from "@/assets/resultado-hipertrofia-2026.png.asset.json";
 import resultPersonalized from "@/assets/resultado-personalizado-2026.png.asset.json";
 import trainingOne from "@/assets/treino-aluno-1.mp4.asset.json";
+import trainingOnePoster from "@/assets/treino-aluno-1-poster.jpg.asset.json";
 import trainingTwo from "@/assets/treino-aluno-2.mp4.asset.json";
+import trainingTwoPoster from "@/assets/treino-aluno-2-poster.jpg.asset.json";
 import trainingThree from "@/assets/treino-aluno-3.mp4.asset.json";
+import trainingThreePoster from "@/assets/treino-aluno-3-poster.jpg.asset.json";
 import trainingFour from "@/assets/treino-aluno-4.mp4.asset.json";
+import trainingFourPoster from "@/assets/treino-aluno-4-poster.jpg.asset.json";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 
@@ -40,7 +44,12 @@ const assetUrl = (path: string) => `https://personaltiago.lovable.app${path}`;
 const tiagoPhotoUrl = assetUrl(tiagoPhoto.url);
 const resultHypertrophyUrl = assetUrl(resultHypertrophy.url);
 const resultPersonalizedUrl = assetUrl(resultPersonalized.url);
-const trainingVideos = [trainingOne, trainingTwo, trainingThree, trainingFour].map((video) => assetUrl(video.url));
+const trainingVideos = [
+  { src: assetUrl(trainingOne.url), poster: assetUrl(trainingOnePoster.url) },
+  { src: assetUrl(trainingTwo.url), poster: assetUrl(trainingTwoPoster.url) },
+  { src: assetUrl(trainingThree.url), poster: assetUrl(trainingThreePoster.url) },
+  { src: assetUrl(trainingFour.url), poster: assetUrl(trainingFourPoster.url) },
+];
 const whatsappNumber = "5567991066646";
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Olá, quero agendar uma avaliação com o Personal Tiago!")}`;
 const getPlanWhatsappUrl = (planName: string) =>
@@ -248,7 +257,7 @@ function Index() {
            <blockquote className="mt-5 border-l-4 border-lime bg-background p-6 text-lg font-semibold leading-relaxed text-foreground">“Treino planejado, atenção em cada execução e evolução que dá vontade de continuar.” <span className="mt-3 block text-xs font-bold uppercase text-muted-foreground">— Aluno acompanhado</span></blockquote>
           <div className="mt-14 flex items-center gap-3"><Play className="fill-lime text-lime" /><h3 className="font-display text-2xl font-black uppercase">Treino em ação</h3></div>
           <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
-             {trainingVideos.map((videoUrl, index) => <div key={videoUrl} className="relative overflow-hidden bg-background"><video controls preload="metadata" playsInline className="aspect-[9/16] w-full object-cover" aria-label={`Vídeo de treino com aluno ${index + 1}`}><source src={videoUrl} type="video/mp4" /></video></div>)}
+             {trainingVideos.map(({ src, poster }, index) => <div key={src} className="relative overflow-hidden bg-background"><video controls preload="metadata" playsInline poster={poster} className="aspect-[9/16] w-full object-cover" aria-label={`Vídeo de treino com aluno ${index + 1}`}><source src={src} type="video/mp4" /></video></div>)}
           </div>
         </div>
       </section>
